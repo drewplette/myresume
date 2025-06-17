@@ -1,0 +1,201 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}My Portfolio{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/portfolio.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="portfolio-container">
+    <h1>My Portfolio</h1>
+    
+    <section class="intro">
+        <p>Here you can find examples of my recent work and projects. You can filter on keywords or topics.</p>
+    </section>
+    
+    <section class="filter-bar">
+        <div class="filter-controls">
+            <label for="filter-input">Filter projects:</label>
+            <input type="text" id="filter-input" placeholder="Type to filter...">
+            <div class="tag-filters">
+                <button class="filter-tag" data-tag="Python">Python</button>
+                <button class="filter-tag" data-tag="AI">AI/ML</button>
+                <button class="filter-tag" data-tag="Data">Data</button>
+                <button class="filter-tag" data-tag="Web">Web</button>
+                <button class="filter-tag active" data-tag="All">All</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects">
+        <h2>Projects</h2>
+        
+        <div class="portfolio-grid">
+            <!-- Project 1 -->
+            <div class="portfolio-item" data-tags="Python,AI,ML">
+                <div class="portfolio-preview">
+                    <h3>ChessBro</h3>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">AI</span>
+                    </div>
+                </div>
+                <div class="portfolio-details">
+                    <h3>ChessBro: Adaptive Chess AI</h3>
+                    <p>An intelligent chess engine built in Python that combines neural networks, reinforcement learning, and heuristic logic to improve its gameplay over time. The AI learns from both human and self-play, evolving from basic rules to increasingly complex strategies through continuous self-training.</p>
+                    <ul>
+                        <li><strong>Key technologies used:</strong> Python, PyTorch, NumPy, Reinforcement Learning, Neural Networks</li>
+                        <li><strong>Skills showcased:</strong> AI/ML development, game logic implementation, data-driven decision making, adaptive algorithms</li>
+                        <li><a href="https://github.com/yourusername/chessbro" target="_blank">View on GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="portfolio-item" data-tags="Python,Data,Visualization">
+                <div class="portfolio-preview">
+                    <h3>LogiMap</h3>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Data</span>
+                    </div>
+                </div>
+                <div class="portfolio-details">
+                    <h3>LogiMap: Optimizing U.S. Logistics Networks</h3>
+                    <p>A data-driven research and visualization project analyzing the organizational structure of major logistics and package delivery companies across the United States. This project features an interactive map of current depot layouts, a custom performance estimation algorithm for shipping efficiency, and proposed alternative depot configurations designed to optimize delivery speed and regional coverage.</p>
+                    <ul>
+                        <li><strong>Key technologies used:</strong> Python, Pandas, Folium/Leaflet.js, Geopandas, custom algorithms, data visualization</li>
+                        <li><strong>Skills showcased:</strong> Geospatial analysis, data modeling, logistics research, algorithmic optimization, interactive mapping</li>
+                        <li><a href="https://github.com/yourusername/logimap" target="_blank">View on GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-tags="Django,.NET,Web Design,Full Stack">
+                <div class="portfolio-preview">
+                    <h3>Website Development</h3>
+                    <div class="tags">
+                        <span class="tag">Django</span>
+                        <span class="tag">.NET</span>
+                    </div>
+                </div>
+                <div class="portfolio-details">
+                    <h3>Website Development & Design</h3>
+                    <p>Led end-to-end design and development of multiple responsive websites of various specifications using Django and .NET technologies across different projects.</p>
+                    <ul>
+                        <li><strong>Key technologies used:</strong> Django, .NET Core</li>
+                        <li><strong>Skills showcased:</strong> Full stack development, responsive web design, UI/UX design</li>
+                        <li><a href="https://yourwebsiteportfolio.com" target="_blank">Site gallery</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="portfolio-item" data-tags="Web,React">
+                <div class="portfolio-preview">
+                    <h3>Project 5</h3>
+                    <div class="tags">
+                        <span class="tag">Web</span>
+                        <span class="tag">React</span>
+                    </div>
+                </div>
+                <div class="portfolio-details">
+                    <h3>Name</h3>
+                    <p>Description of your project and its key features.</p>
+                    <ul>
+                        <li>Key technologies used:</li>
+                        <li>Skills showcased:</li>
+                        <li>Link:</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Project 6 -->
+            <div class="portfolio-item" data-tags="Mobile,React">
+                <div class="portfolio-preview">
+                    <h3>Project 6</h3>
+                    <div class="tags">
+                        <span class="tag">Mobile</span>
+                        <span class="tag">React</span>
+                    </div>
+                </div>
+                <div class="portfolio-details">
+                    <h3>Name</h3>
+                    <p>Description of your project and its key features.</p>
+                    <ul>
+                        <li>Key technology/skill used</li>
+                        <li>Another technology/skill</li>
+                        <li>Achievement or outcome</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Project 7 -->
+            <div class="portfolio-item" data-tags="Data,AI">
+                <div class="portfolio-preview">
+                    <h3>Project 7</h3>
+                    <div class="tags">
+                        <span class="tag">Data</span>
+                        <span class="tag">AI</span>
+                    </div>
+                </div>
+                <div class="portfolio-details">
+                    <h3>Name</h3>
+                    <p>Description of your project and its key features.</p>
+                    <ul>
+                        <li>Key technology/skill used</li>
+                        <li>Another technology/skill</li>
+                        <li>Achievement or outcome</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Project 8 -->
+            <div class="portfolio-item" data-tags="Database,Backend">
+                <div class="portfolio-preview">
+                    <h3>Project 8</h3>
+                    <div class="tags">
+                        <span class="tag">DB</span>
+                        <span class="tag">Backend</span>
+                    </div>
+                </div>
+                <div class="portfolio-details">
+                    <h3>Name</h3>
+                    <p>Description of your project and its key features.</p>
+                    <ul>
+                        <li>Key technology/skill used</li>
+                        <li>Another technology/skill</li>
+                        <li>Achievement or outcome</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Project 9 -->
+            <div class="portfolio-item" data-tags="Web,Frontend">
+                <div class="portfolio-preview">
+                    <h3>Project 9</h3>
+                    <div class="tags">
+                        <span class="tag">Web</span>
+                        <span class="tag">Frontend</span>
+                    </div>
+                </div>
+                <div class="portfolio-details">
+                    <h3>Name</h3>
+                    <p>Description of your project and its key features.</p>
+                    <ul>
+                        <li>Key technology/skill used</li>
+                        <li>Another technology/skill</li>
+                        <li>Achievement or outcome</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/portfolio.js' %}"></script>
+{% endblock %}

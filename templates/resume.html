@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}My Resume{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/resume.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="resume-container">
+    <div class="resume-header">
+        <h1>My Resume</h1>
+    </div>
+
+    <div class="resume-columns">
+        <!-- Left Column -->
+        <div class="resume-column left-column">
+            <section class="resume-section">
+                <h2 class="section-header">Experience</h2>
+                <div class="section-header-underline"></div>
+                
+                <article>
+                    <h3>Lead Application Support Analyst – Upland Panviva</h3>
+                    <p class="date">01/2022 – PRESENT</p>
+                    <ul class="experience-list">
+                        <li>Lead L1 team members in ticket escalations and provide training and oversight on tickets.</li>
+                        <li>Design and develop internal tools and software to improve team effectiveness.</li>
+                        <li>Work with the Development and QA teams to identify bugs, resolve issues and test changes with new releases.</li>
+                        <li>Assist CSMs with customer demonstrations and new customer training and implementation.</li>
+                        <li>Review and revise existing training documentation and procedures to ensure consistent, quality service.</li>
+                        <li>Fulfill all previous responsibilities held.</li>
+                    </ul>
+                </article>
+                
+                <article>
+                    <h3>Application Support Analyst – Upland Panviva</h3>
+                    <p class="date">03/2021 – 01/2022</p>
+                    <ul class="experience-list">
+                        <li>Provide high level customer service and support to Panviva customers, partners, prospects and internal staff, utilizing best KCS and ITIL practices.</li>
+                        <li>Troubleshoot issues raised and communicate issues and resolutions in both the customers and the developer's language.</li>
+                        <li>Responsible for creating 30+ technical internal product documents for new releases and technical training material.</li>
+                        <li>Perform routine maintenance tasks and upgrade application infrastructure utilizing Azure Pipelines and Puppet.</li>
+                        <li>Work with the team on new implementations and product upgrades as required.</li>
+                        <li>Ensure implementation documentation and checklists are accurate and current.</li>
+                    </ul>
+                </article>
+                
+                <article>
+                    <h3>Technology Support Specialist – Fort Bend County</h3>
+                    <p class="date">07/2019 – 03/2021</p>
+                    <ul class="experience-list">
+                        <li>Provided excellent in-person and remote technical support for 4,000+ users across the county both within a team and independently.</li>
+                        <li>Triaged and assigned tickets based on severity and priority.</li>
+                        <li>Diagnosed and repaired desktop and laptop hardware and software for all remote and in-person users.</li>
+                        <li>Efficiently updated and maintained a variety of software and web-based applications across all departments.</li>
+                    </ul>
+                </article>
+            </section>
+        </div>
+
+        <!-- Right Column -->
+        <div class="resume-column right-column">
+            <section class="resume-section">
+                <h2 class="section-header">Education</h2>
+                <div class="section-header-underline"></div>
+                
+                <div class="credential-item">
+                    <h3 class="credential-title">Bachelor of Science – University of Houston Victoria</h3>
+                    <span class="credential-date">May 2021</span>
+                    <p class="credential-subtitle">Major: Computer Information Systems</p>
+                </div>
+                
+                <div class="credential-item">
+                    <h3 class="credential-title">Masters of Science – Western Governors University</h3>
+                    <span class="credential-date">2026</span>
+                    <p class="credential-subtitle">Major: Software Engineering – Domain Driven Design</p>
+                </div>
+            </section>
+            
+            <section class="resume-section">
+                <h2 class="section-header">Certifications & Professional Training</h2>
+                <div class="section-header-underline"></div>
+                
+                <div class="credential-item">
+                    <h3 class="credential-title">Google IT Support Professional Certificate</h3>
+                    <span class="credential-date">December 2020</span>
+                </div>
+                
+                <div class="credential-item">
+                    <h3 class="credential-title">Google IT Automation with Python Professional Certificate</h3>
+                    <span class="credential-date">August 2023</span>
+                </div>
+                
+                <div class="credential-item">
+                    <h3 class="credential-title">New Relic Full Stack Observability Practitioner</h3>
+                    <span class="credential-date">August 2023</span>
+                </div>
+            </section>
+            
+            <section class="resume-section">
+                <h2 class="section-header">Volunteering</h2>
+                <div class="section-header-underline"></div>
+                
+                <article>
+                    <h3>TEALS Teaching Assistant – Microsoft</h3>
+                    <p class="date">2022 – 2024</p>
+                    <ul class="experience-list">
+                        <li>Plan and coordinate teaching curriculum with teaching team for local high school.</li>
+                        <li>Assist in leading lectures and providing industry knowledge within the classroom.</li>
+                    </ul>
+                </article>
+                
+                <article>
+                    <h3>Technology / Stream Team – The Waters Church</h3>
+                    <p class="date">2017 – 2021</p>
+                    <ul class="experience-list">
+                        <li>Assisted weekly with services and special events by running presentation software for band and leadership.</li>
+                        <li>Identified and resolved minor miscellaneous technology incidents as required, such fixing corrupt files or file formatting issues.</li>
+                    </ul>
+                </article>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}
