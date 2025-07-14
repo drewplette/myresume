@@ -1,0 +1,202 @@
+/* Resume specific styles */
+
+/* Two-column layout */
+.resume-columns {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Column sizing */
+.resume-column {
+    flex: 1;
+}
+
+.left-column {
+    flex: 1.5; /* Make the left column slightly wider for experience */
+}
+
+.right-column {
+    flex: 1;
+}
+
+/* Section styling */
+.resume-section {
+    margin-bottom: 30px;
+}
+
+.resume-section h2 {
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+/* Education and Certification Sections */
+.section-header {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 8px;
+    padding-bottom: 0;
+    font-weight: 600;
+}
+
+/* Section underline that matches your screenshot */
+.section-header-underline {
+    height: 2px;
+    background-color: #0077cc;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+/* Experience section styling */
+article {
+    margin-bottom: 25px;
+}
+
+article h3 {
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #444;
+}
+
+.date {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.experience-list {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.experience-list li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+/* Education section styling */
+.education-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.education-details {
+    flex: 1;
+}
+
+.education-details h3 {
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.education-details p {
+    margin-top: 0;
+    color: #444;
+}
+
+.education-date {
+    text-align: right;
+    min-width: 80px;
+    font-weight: normal;
+    color: #444;
+}
+
+/* Certification section styling */
+.certification-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.certification-details {
+    flex: 1;
+}
+
+.certification-details h3 {
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.certification-date {
+    text-align: right;
+    min-width: 120px;
+    font-weight: normal;
+    color: #444;
+}
+
+/* Clean item layout */
+.credential-item {
+    margin-bottom: 20px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.credential-title {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #333;
+    width: 70%;
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+.credential-subtitle {
+    color: #666;
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 0.95rem;
+    width: 100%;
+}
+
+.credential-date {
+    color: #555;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: right;
+    width: 30%;
+}
+
+/* Separator for visual clarity */
+.credential-item:not(:last-child) {
+    position: relative;
+}
+
+.credential-item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    bottom: -11px;
+    left: 0;
+    width: 40%;
+    height: 1px;
+    background-color: #e5e5e5;
+}
+
+/* Header styling */
+.resume-header h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .resume-columns {
+        flex-direction: column;
+    }
+    
+    .left-column, .right-column {
+        flex: 1;
+    }
+}
