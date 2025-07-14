@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-drz!^o(^!dow6l!$t#r02%-uea+5-y8ww6$!j*jaa708h2y6yu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.64', 'localhost', '127.0.0.1', 'www.aplette.com']
+ALLOWED_HOSTS = ['192.168.1.64', 'localhost', '127.0.0.1', 'www.aplette.com', 'aplette.com']
 
 
 # Application definition
@@ -126,6 +126,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 ]
 
 # Default primary key field type
