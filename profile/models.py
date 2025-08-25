@@ -40,13 +40,33 @@ class Portfolio(models.Model):
 # Blog model
 class Blog(models.Model):
     title = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200, unique=True, blank=True)
     content = models.TextField()
+    excerpt = models.TextField(max_length=300, blank=True, help_text="Short description for blog list")
     author = models.CharField(max_length=100)
+    tags = models.CharField(max_length=200, blank=True, help_text="Comma-separated tags")
+    featured_image = models.ImageField(upload_to='blog_images/', blank=True, null=True)
+    is_published = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ['-created_at']
+
     def __str__(self):
         return self.title
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            from django.utils.text import slugify
+            self.slug = slugify(self.title)
+        if not self.excerpt:
+            # Auto-generate excerpt from content
+            self.excerpt = ' '.join(self.content.split()[:30]) + '...'
+        super().save(*args, **kwargs)
+    
+    def get_tags_list(self):
+        return [tag.strip() for tag in self.tags.split(',') if tag.strip()]
 
 # Comment model
 class Comment(models.Model):

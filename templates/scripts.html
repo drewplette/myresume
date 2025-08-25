@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Scripts{% endblock %}
+
+{% block content %}
+<div class="scripts-container">
+    <h1>Scripts</h1>
+    <p>Here are some of the scripts I have created that I tweaked so they are more useful to others. There are many many more but they are much too specific to upload.</p>
+    
+    <h2>Available Scripts</h2>
+    <ul class="script-list">
+        <li><a href="{% static 'scripts/file_manager.py' %}" download>File Manager Script (Python)</a> - Python script with functionality similar to WinDirStat that will view files on your system and allow you to better consolidate similar files. I had a bad habit of saving files related to specific topics in many areas so I needed an easy way to find all of them and move them.</li>
+        <li><a href="{% static 'scripts/TimeAppTracker.py' %}" download>Time App Tracker (Python)</a> - A productivity script for keep track of where time is spent while you are using your machine. I have a propensity to get both easily distracted and stuck down rabbit holes, so this helps keep me accountable.</li>
+        <li><a href="{% static 'scripts/oktaSAMLCertChecker.py' %}" download>Okta SAML Cert Checker (Python)</a> - script for checking Okta SAML certificate expiration. It can be kind of a pain to check cert expiries in Okta so this does it enmasse.</li>
+        <li><a href="{% static 'scripts/NewRelicScrape.py' %}" download>New Relic Scraper (Python)</a> - A Python script for scraping data from New Relic logs.</li>
+        <!-- Add more scripts as needed -->
+    </ul>
+
+{% endblock %}

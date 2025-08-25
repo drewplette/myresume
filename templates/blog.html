@@ -1,39 +1,159 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Blog{% endblock %}
+
+{% block extra_css %}
+<style>
+    .blog-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    
+    .intro {
+        margin-bottom: 40px;
+        text-align: center;
+        color: #666;
+    }
+    
+    .blog-posts {
+        margin-bottom: 40px;
+    }
+    
+    .blog-post {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background: #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        transition: box-shadow 0.3s ease;
+    }
+    
+    .blog-post:hover {
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    
+    .blog-post h3 {
+        margin: 0 0 10px 0;
+        color: #333;
+    }
+    
+    .blog-post h3 a {
+        text-decoration: none;
+        color: #333;
+    }
+    
+    .blog-post h3 a:hover {
+        color: #007bff;
+    }
+    
+    .blog-meta {
+        color: #888;
+        font-size: 0.9em;
+        margin-bottom: 15px;
+    }
+    
+    .blog-excerpt {
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+    
+    .read-more {
+        display: inline-block;
+        padding: 8px 16px;
+        background: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 0.9em;
+        transition: background 0.3s ease;
+    }
+    
+    .read-more:hover {
+        background: #0056b3;
+    }
+    
+    .no-posts {
+        text-align: center;
+        color: #888;
+        font-style: italic;
+        padding: 40px 0;
+    }
+    
+    .search-bar {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    
+    .search-bar input {
+        padding: 10px;
+        width: 300px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+</style>
+{% endblock %}
 
 {% block content %}
 <div class="blog-container">
     <h1>Blog</h1>
     
     <section class="intro">
-        <p>Welcome to my portfolio. Here you can find examples of my recent work and projects.</p>
+        <p>Collection of thoughts and ramblings related to the works hosted here or elsewhere.</p>
+        <div style="margin-top: 15px;">
+            <a href="{% url 'blog_archive' %}" style="color: #007bff; text-decoration: none; font-weight: 500;">📚 View Archive</a>
+        </div>
     </section>
     
-    <section class="projects">
-        <h2>Projects</h2>
-        
-        <div class="project">
-            <h3>Project 1</h3>
-            <p>Description of your first project and its key features.</p>
-            <ul>
-                <li>Key technology/skill used</li>
-                <li>Another technology/skill</li>
-                <li>Achievement or outcome</li>
-            </ul>
-        </div>
-        
-        <div class="project">
-            <h3>Project 2</h3>
-            <p>Description of your second project and its key features.</p>
-            <ul>
-                <li>Key technology/skill used</li>
-                <li>Another technology/skill</li>
-                <li>Achievement or outcome</li>
-            </ul>
-        </div>
-        
-        <!-- Add more projects as needed -->
+    <section class="search-bar">
+        <input type="text" id="blog-search" placeholder="Search blog posts...">
+    </section>
+    
+    <section class="blog-posts">
+        {% if posts %}
+            {% for post in posts %}
+            <article class="blog-post" data-title="{{ post.title|lower }}" data-content="{{ post.content|lower|truncatewords:50 }}">
+                <h3><a href="{% url 'blog_detail' post.id %}">{{ post.title }}</a></h3>
+                <div class="blog-meta">
+                    By {{ post.author }} • {{ post.created_at|date:"F d, Y" }}
+                    {% if post.updated_at != post.created_at %}
+                        • Updated {{ post.updated_at|date:"F d, Y" }}
+                    {% endif %}
+                </div>
+                <div class="blog-excerpt">
+                    {{ post.content|truncatewords:30|linebreaks }}
+                </div>
+                <a href="{% url 'blog_detail' post.id %}" class="read-more">Read More</a>
+            </article>
+            {% endfor %}
+        {% else %}
+            <div class="no-posts">
+                <p>No blog posts available yet. Check back soon!</p>
+            </div>
+        {% endif %}
     </section>
 </div>
+
+<script>
+// Simple search functionality
+document.getElementById('blog-search').addEventListener('input', function(e) {
+    const searchTerm = e.target.value.toLowerCase();
+    const posts = document.querySelectorAll('.blog-post');
+    
+    posts.forEach(post => {
+        const title = post.getAttribute('data-title');
+        const content = post.getAttribute('data-content');
+        
+        if (title.includes(searchTerm) || content.includes(searchTerm)) {
+            post.style.display = 'block';
+        } else {
+            post.style.display = 'none';
+        }
+    });
+});
+</script>
 {% endblock %}

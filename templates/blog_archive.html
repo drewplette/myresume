@@ -1,0 +1,200 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Blog Archive{% endblock %}
+
+{% block extra_css %}
+<style>
+    .archive-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    
+    .archive-nav {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 5px;
+        margin-bottom: 30px;
+    }
+    
+    .archive-nav h3 {
+        margin: 0 0 15px 0;
+        color: #333;
+    }
+    
+    .archive-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .archive-link {
+        padding: 8px 16px;
+        background: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 14px;
+        transition: background 0.3s ease;
+    }
+    
+    .archive-link:hover {
+        background: #0056b3;
+    }
+    
+    .archive-link.active {
+        background: #28a745;
+    }
+    
+    .archive-section {
+        margin-bottom: 40px;
+    }
+    
+    .archive-year {
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        color: #333;
+    }
+    
+    .archive-month {
+        margin-bottom: 30px;
+    }
+    
+    .archive-month h4 {
+        color: #666;
+        margin-bottom: 15px;
+        font-size: 1.1em;
+    }
+    
+    .archive-post {
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .archive-post:last-child {
+        border-bottom: none;
+    }
+    
+    .archive-post-title {
+        margin: 0 0 5px 0;
+    }
+    
+    .archive-post-title a {
+        color: #333;
+        text-decoration: none;
+        font-size: 1.1em;
+    }
+    
+    .archive-post-title a:hover {
+        color: #007bff;
+    }
+    
+    .archive-post-meta {
+        color: #888;
+        font-size: 0.9em;
+        margin-bottom: 8px;
+    }
+    
+    .archive-post-excerpt {
+        color: #555;
+        line-height: 1.5;
+    }
+    
+    .stats-section {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 5px;
+        margin-bottom: 30px;
+    }
+    
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+    }
+    
+    .stat-item {
+        text-align: center;
+    }
+    
+    .stat-number {
+        font-size: 2em;
+        font-weight: bold;
+        color: #007bff;
+    }
+    
+    .stat-label {
+        color: #666;
+        font-size: 0.9em;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="archive-container">
+    <h1>Blog Archive</h1>
+    
+    <div class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">{{ total_posts }}</div>
+                <div class="stat-label">Total Posts</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">{{ total_years }}</div>
+                <div class="stat-label">Years Writing</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">{{ total_comments }}</div>
+                <div class="stat-label">Comments</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="archive-nav">
+        <h3>Browse by Year</h3>
+        <div class="archive-links">
+            <a href="{% url 'blog_archive' %}" class="archive-link {% if not selected_year %}active{% endif %}">All</a>
+            {% for year in years %}
+                <a href="{% url 'blog_archive' %}?year={{ year }}" 
+                   class="archive-link {% if year == selected_year %}active{% endif %}">{{ year }}</a>
+            {% endfor %}
+        </div>
+    </div>
+    
+    {% for year, months in posts_by_year.items %}
+    <div class="archive-section">
+        <h2 class="archive-year">{{ year }}</h2>
+        
+        {% for month, posts in months.items %}
+        <div class="archive-month">
+            <h4>{{ month }}</h4>
+            
+            {% for post in posts %}
+            <article class="archive-post">
+                <h5 class="archive-post-title">
+                    <a href="{% url 'blog_detail' post.id %}">{{ post.title }}</a>
+                </h5>
+                <div class="archive-post-meta">
+                    {{ post.created_at|date:"F d" }} • By {{ post.author }}
+                </div>
+                <div class="archive-post-excerpt">
+                    {{ post.content|truncatewords:20 }}
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+    
+    {% if not posts_by_year %}
+    <div style="text-align: center; color: #888; padding: 40px 0;">
+        <p>No blog posts found for the selected period.</p>
+        <a href="{% url 'blog' %}" style="color: #007bff; text-decoration: none;">← Back to Blog</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
